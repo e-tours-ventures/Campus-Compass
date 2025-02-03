@@ -14,7 +14,7 @@ const generateToken = (userId) => {
 };
 
 exports.registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password ,role} = req.body;
 
   try {
     // Check if user already exists
@@ -24,7 +24,7 @@ exports.registerUser = async (req, res) => {
     }
 
     // Create a new user
-    const user = new User({ name, email, password });
+    const user = new User({ name, email, password,role });
 
     // Save user to MongoDB
     await user.save();
