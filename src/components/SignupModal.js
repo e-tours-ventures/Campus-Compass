@@ -3,6 +3,9 @@ import { useNavigate, useLocation } from "react-router-dom"; // Import useLocati
 import "./Modal.css";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import axios from "axios";
+import Swal from "sweetalert2";
+
+
 const SignupModal = ({ onClose, onSwitchToLogin }) => {
   const [name, setName] = useState(""); // New state for name
   const [email, setEmail] = useState("");
@@ -28,6 +31,14 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
         email: email.trim(),
         password,
       });
+
+       // Success Alert
+    Swal.fire({
+      icon: "success",
+      title: "Success!",
+      text: "Account created successfully!",
+      confirmButtonText: "OK",
+    });
       
       setSuccess("Account created successfully!");
       setName("");
@@ -37,7 +48,7 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
       navigate(location.pathname);
     } catch (err) {
       console.error("Error during signup:", err.response?.data); // Log detailed error
-      setError(err.response?.data?.message || "An error occurred while creating your account");
+      // setError(err.response?.data?.message || "An error occurred while creating your account");
     }
     
   };
