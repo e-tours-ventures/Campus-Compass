@@ -30,7 +30,9 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
         name: name.trim(),
         email: email.trim(),
         password,
+        role: "student"
       });
+      
 
        // Success Alert
     Swal.fire({
