@@ -48,6 +48,14 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
       navigate(location.pathname);
     } catch (err) {
       console.error("Error during signup:", err.response?.data); // Log detailed error
+     
+     // Show an error SweetAlert
+    Swal.fire({
+      icon: "error",
+      title: "Signup Failed",
+      text: err.response?.data?.message || "An error occurred while creating your account. Please try again.",
+      confirmButtonText: "Try Again",
+    });
       // setError(err.response?.data?.message || "An error occurred while creating your account");
     }
     
