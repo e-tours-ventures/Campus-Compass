@@ -1,39 +1,71 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const LoginModal = ({ onClose, onSwitchToSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError(""); // Reset error state
 
-    try {
-      const response = await fetch("http://localhost:3001/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError(""); // Reset error state
+
+  try {
+    const response = await fetch("http://localhost:3001/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Save token & role in local storage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role); // Assuming backend returns role
+
+      // Show success alert
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful!",
+        text: `Welcome ${data.role === "admin" ? "Admin" : "Student"}!`,
+        showConfirmButton: false,
+        timer: 2000,
       });
 
-      const data = await response.json();
+      setTimeout(() => {
+        // Redirect based on role
+        if (data.role === "admin") {
+          // window.location.href = "/admin-dashboard"; // Redirect admin
+        } else {
+          window.location.href = "/UniversitiesAndDegrees/Universitypage"; // Redirect student
+        }
+      }, 2000);
 
-      if (response.ok) {
-        // Save the token in local storage
-        localStorage.setItem("token", data.token);
-        alert("Login successful!");
-        onClose(); // Close the modal
-      } else {
-        setError(data.message || "Failed to log in");
-      }
-    } catch (err) {
-      setError("An error occurred while logging in");
+      onClose(); // Close the modal
+    } else {
+      // Show error alert
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: data.message || "Invalid credentials!",
+      });
     }
-  };
+  } catch (err) {
+    // Show network error alert
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "An error occurred while logging in. Please try again!",
+    });
+  }
+};
+
 
   return (
     <div className="modal-overlay">

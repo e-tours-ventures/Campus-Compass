@@ -50,11 +50,13 @@ exports.loginUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
+    console.log(user);
     if (user && (await user.matchPassword(password))) {
       res.json({
         _id: user.id,
         name: user.name,
         email: user.email,
+        role: user.role,
         token: generateToken(user.id),
       });
     } else {
