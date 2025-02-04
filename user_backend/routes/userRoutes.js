@@ -1,5 +1,5 @@
 const express = require("express");
-const { registerUser, loginUser, getAllUsers, deleteUser } = require("../controllers/userController");
+const { registerUser, loginUser, getAllUsers, deleteUser, getAllStudents } = require("../controllers/userController");
 
 const router = express.Router();
 
@@ -14,5 +14,7 @@ router.get("/users", getAllUsers);
 
 // Delete a user by ID
 router.delete("/users/:id", deleteUser);
+
+router.get("/users/getStudentDetails", getAllStudents);
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const ContactMessage = require("../models/ContactMessages");
 const jwt = require("jsonwebtoken");
 
 // Generate JWT Token
@@ -89,5 +90,46 @@ exports.deleteUser = async (req, res) => {
     res.json({ message: "User removed" });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+
+exports.getAllStudents = async (req, res) => {
+  try {
+    const students = await User.find({ role: "student" }).select("_id name email");
+
+    // Get student emails
+    const studentEmails = students.map(student => student.email);
+
+    // Fetch the latest feedback message for each student
+    const feedbacks = await ContactMessage.aggregate([
+      { $match: { email: { $in: studentEmails } } },
+      { $sort: { created_at: -1 } }, // Sort to get the latest message
+      {
+        $group: {
+          _id: "$email",
+          message: { $first: "$message" },
+          created_at: { $first: "$created_at" } // Keep the latest created_at
+        }
+      }
+    ]);
+
+    // Convert feedbacks array to an object for easy lookup
+    const feedbackMap = {};
+    feedbacks.forEach(fb => {
+      feedbackMap[fb._id] = { message: fb.message, created_at: fb.created_at };
+    });
+
+    // Merge student data with their feedback message
+    const response = students.map(student => ({
+      _id: { "$oid": student._id.toString() }, // Format `_id` as requested
+      name: student.name,
+      email: student.email,
+      message: feedbackMap[student.email]?.message || "No feedback"
+    }));
+
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
