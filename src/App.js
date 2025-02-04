@@ -1,6 +1,12 @@
 import React from 'react';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.min.js";
+// import "bootstrap-icons/font/bootstrap-icons.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 import About from './AboutPage/About';
 import Contact from './ContactUs/Contact';
 import FAQ from './FAQPage/js/FAQ';
@@ -13,6 +19,7 @@ import FloatingButtons from './components/FloatingButtons';
 //import AnimatedCharacter from './Home/js/AnimatedCharacter';
 import ScrollToTopOnRouteChange from './components/ScrollToTopOnRouteChange';
 import Universitypage from './UniversitiesAndDegrees/Universitypage';
+import Admin from './Admin panel/AdminView'
 
 
 
@@ -31,6 +38,7 @@ const App = () => {
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path = "/FAQ" element ={<FAQ/>}/>
+            <Route path="/Admin" element={<Admin/>} />
           </Routes>
           <FloatingButtons/>
         </main>

@@ -1,20 +1,18 @@
 import React from "react";
+import './AdminView.css';
 
 function AdminView() {
     return (
         <div className="container">
-            <h1>Admin View</h1>
-
             <div className="row">
-                <div className="col-6 mb-5">
+                <div className="col-12 col-md-6 mb-3">
                     {/* Search Button */}
-                    {/* <form className="form">
+                    <form className="form">
                         <label htmlFor="search">
                             <input className="input1" type="text" required placeholder="Search here" id="search" />
                             <div className="fancy-bg"></div>
                             <div className="search">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"
-                                    className="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" className="search-icon">
                                     <g>
                                         <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
                                     </g>
@@ -26,74 +24,40 @@ function AdminView() {
                                 </svg>
                             </button>
                         </label>
-                    </form> */}
-                </div>
-                <div className="col-6">
-                    <input required type="date" placeholder="Your Name" className="input2" />
+                    </form>
                 </div>
             </div>
 
-
-
-            <table className="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>FeedBack</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>001</th>
-                        <td>Example Name</td>
-                        <td>Example Email</td>
-                        <td>Example FeedBack</td>
-                        <td>
-                            <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i className="bi bi-pencil-square"></i>
-                            </button>
-                            <button className="btn btn-danger">
-                                <i className="bi bi-trash-fill"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            {/* Update Modal */}
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">Update Student Info</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <div className="mb-3">
-                                <label className="col-form-label">ID</label>
-                                <input type="text" className="form-control" disabled />
-                            </div>
-                            <div className="mb-3">
-                                <label className="col-form-label">Name</label>
-                                <input type="text" className="form-control" />
-                            </div>
-                            <div className="mb-3">
-                                <label className="col-form-label">Email</label>
-                                <input type="email" className="form-control" />
-                            </div>
-                            <div className="mb-3">
-                                <label className="col-form-label">FeedBack</label>
-                                <input type="text" className="form-control" />
-                            </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Update Student</button>
-                        </div>
-                    </div>
+            {/* Table row */}
+            <div className="row">
+                <div className="col-12">
+                    <table className="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Feedback</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    {/* <button className="btn btn-primary">
+                                        <i className="bi bi-pencil-square"></i>
+                                    </button> */}
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -101,7 +65,7 @@ function AdminView() {
             <nav aria-label="Page navigation example">
                 <ul className="pagination justify-content-end">
                     <li className="page-item disabled">
-                        <a className="page-link">Previous</a>
+                        <a className="page-link" href="#">Previous</a>
                     </li>
                     <li className="page-item"><a className="page-link" href="#">1</a></li>
                     <li className="page-item"><a className="page-link" href="#">2</a></li>
