@@ -197,24 +197,49 @@ svg {
     -webkit-transition-delay: 9999s;
 }
 
-/* search btn2 
-
-.input2 {
-  width: 200px;
-  height: 40px;
-  padding: 0 16px;
-  background: transparent;
-  border-radius: 50px;
-  border: 1px solid #fe4567;
-  color: #f9f9f9;
-  animation: shake_541 0.14s 3;
-}
-
-.input2:valid {
-  border-color: #45feaf;
-  animation: none;
-}
-*/
+.auth-buttons {
+    margin: 20px;
+    margin-top: 50px;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .auth-buttons .login-btn,
+  .auth-buttons .signup-btn {
+    padding: 0.6rem 1rem; 
+    border: 2px solid transparent; 
+    border-radius: 4px; 
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+    text-decoration: none; 
+    
+  }
+  
+  .auth-buttons .login-btn {
+    background-color: #007199;
+    color: #e0f4ff;
+  }
+  
+  .auth-buttons .signup-btn {
+    background-color: #007199;
+    color: #e0f4ff;
+  }
+  
+  .auth-buttons .login-btn:hover,
+  .auth-buttons .signup-btn:hover {
+    background-color: #005f80;
+    transform: scale(1.05); 
+  }
+  
+  .auth-buttons .login-btn.active,
+  .auth-buttons .signup-btn.active {
+    border-color: #ffffff !important; 
+    background-color: #004f66; 
+    color: #ffffff; 
+  }
+  
 @keyframes shake_541 {
 
     0%,

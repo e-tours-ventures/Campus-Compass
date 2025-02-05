@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./Admin panel/AdminHeader.css";
-import logo from "../assets/images/logo.png";
+import "./AdminHeader.css";
+import logo from "../../Home/assets/images/logo.png";
 
 
 
@@ -18,16 +18,16 @@ function AdminHeader() {
           <span className="logo-text">Campus Compass</span>
         </div>
 
-        {/* <div className="hamburger-menu" onClick={toggleNav}>
+        <div className="hamburger-menu">
           &#9776;
-        </div> */}
+        </div>
 
-        {/* <nav ref={navRef} className={`nav-links ${isNavVisible ? "show-nav" : ""}`}>
+        <nav className="nav-links">
           <ul>
-            <li><Link to="/" className="header-link" onClick={handleNavLinkClick}>Home</Link></li>
-            <li><Link to="/UniversitiesAndDegrees/Universitypage" className="header-link" onClick={handleNavLinkClick}>Courses</Link></li>
+            <li>Home</li>
+            <li>Courses</li>
           </ul>
-        </nav> */}
+        </nav>
 
         {/* Login & Signup Buttons 
         <div className="auth-buttons">
