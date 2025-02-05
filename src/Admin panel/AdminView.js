@@ -29,8 +29,9 @@ function AdminView() {
             </div>
 
             {/* Table row */}
-            <div className="row">
-                <div className="col-12">
+
+            <div className="mask">
+                <div>
                     <table className="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -43,14 +44,165 @@ function AdminView() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>001</td>
+                                <td>12365478010</td>
                                 <td>Example Name</td>
                                 <td>example@email.com</td>
                                 <td>Example Feedback</td>
                                 <td>
-                                    {/* <button className="btn btn-primary">
-                                        <i className="bi bi-pencil-square"></i>
-                                    </button> */}
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
+                                    <button className="btn btn-danger">
+                                        <i className="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12365478010</td>
+                                <td>Example Name</td>
+                                <td>example@email.com</td>
+                                <td>Example Feedback</td>
+                                <td>
                                     <button className="btn btn-danger">
                                         <i className="bi bi-trash-fill"></i>
                                     </button>
@@ -60,6 +212,7 @@ function AdminView() {
                     </table>
                 </div>
             </div>
+
 
             {/* Pagination */}
             <nav aria-label="Page navigation example">
