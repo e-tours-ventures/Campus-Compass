@@ -84,7 +84,7 @@ function AdminView() {
                 </div> */}
 
             {/* Table for Students & Feedback */}
-            <div className="container">
+            <div className="admin-container">
                 <div className="mask">
                     <table className="table table-bordered table-hover">
                         <thead>
