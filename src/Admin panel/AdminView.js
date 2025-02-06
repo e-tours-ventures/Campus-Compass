@@ -8,12 +8,15 @@ function AdminView() {
         { id: "12365478012", name: "Jane Doe", email: "janedoe@email.com", feedback: "Loved the service!" },
         { id: "12365478010", name: "Example Name", email: "example@email.com", feedback: "Example Feedback" },
         { id: "12365478011", name: "John Doe", email: "johndoe@email.com", feedback: "Great experience!" },
+        { id: "12365478012", name: "Jane Doe", email: "janedoe@email.com", feedback: "Loved the service!" },
+        { id: "12365478010", name: "Example Name", email: "example@email.com", feedback: "Example Feedback" },
+        { id: "12365478011", name: "John Doe", email: "johndoe@email.com", feedback: "Great experience!" },
         { id: "12365478012", name: "Jane Doe", email: "janedoe@email.com", feedback: "Loved the service!" }
     ];
 
     return (
         <>
-            <div className="row">
+            {/* <div className="row"> */}
                 <AdminHeader />
 
                 {/* <AdminHeader /> */}
@@ -42,8 +45,8 @@ function AdminView() {
 
                     <div className="col-6 col-md-6 mb-3">
                         <div className="auth-buttons">
-                            <button className="login-btn" >Login</button>
-                            <button className="signup-btn" >Sign Up</button>
+                            <button className="login-btn" >Add new Student</button>
+                            {/* <button className="signup-btn" >Sign Up</button> */}
                         </div>
                     </div>
                 </div>
@@ -78,7 +81,7 @@ function AdminView() {
                         </table>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     );
 }

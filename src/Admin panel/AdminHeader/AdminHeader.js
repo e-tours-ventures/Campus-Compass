@@ -25,17 +25,12 @@ function AdminHeader() {
         <nav className="nav-links">
           <ul>
             <li>Home</li>
+            <li>Student Info</li>
             <li>Courses</li>
           </ul>
         </nav>
 
-        {/* Login & Signup Buttons 
-        <div className="auth-buttons">
-          <button className="login-btn" onClick={openLogin}>Login</button>
-          <button className="signup-btn" onClick={openSignup}>Sign Up</button>
-        </div>*/}
-
-       
+        
       </div>
     </header>
   );

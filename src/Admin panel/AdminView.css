@@ -52,7 +52,10 @@ h2 {
     border-collapse: collapse;
     margin-bottom: 10px;
 }
-
+thead{
+    position: sticky;
+    top: 0;
+}
 .table th,
 .table td {
     padding: 4px 25px;
@@ -204,8 +207,7 @@ svg {
     gap: 1rem;
   }
   
-  .auth-buttons .login-btn,
-  .auth-buttons .signup-btn {
+  .auth-buttons .login-btn{
     padding: 0.6rem 1rem; 
     border: 2px solid transparent; 
     border-radius: 4px; 
@@ -218,23 +220,21 @@ svg {
   }
   
   .auth-buttons .login-btn {
-    background-color: #007199;
+    background-color: #3b4d5f;
     color: #e0f4ff;
   }
   
-  .auth-buttons .signup-btn {
+  /* .auth-buttons .signup-btn {
     background-color: #007199;
     color: #e0f4ff;
-  }
+  } */
   
-  .auth-buttons .login-btn:hover,
-  .auth-buttons .signup-btn:hover {
+  .auth-buttons .login-btn:hover{
     background-color: #005f80;
     transform: scale(1.05); 
   }
   
-  .auth-buttons .login-btn.active,
-  .auth-buttons .signup-btn.active {
+  .auth-buttons .login-btn.active{
     border-color: #ffffff !important; 
     background-color: #004f66; 
     color: #ffffff; 
