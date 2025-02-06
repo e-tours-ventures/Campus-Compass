@@ -232,13 +232,13 @@ svg {
     flex-grow: 1;
 }
 
-.auth-buttons {
+.auth-buttons2 {
     display: flex;
     justify-content: flex-end;
     width: 100%;
 }
 
-.auth-buttons .addStu-btn {
+.auth-buttons2 .addStu-btn {
     padding: 0.6rem 1rem;
     border: 2px solid transparent;
     border-radius: 4px;
@@ -254,14 +254,14 @@ svg {
 }
 
 
-.auth-buttons {
+.auth-buttons2 {
     margin: 20px;
     margin-top: 50px;
     display: flex;
     gap: 1rem;
 }
 
-.auth-buttons .addStu-btn {
+.auth-buttons2 .addStu-btn {
     padding: 0.6rem 1rem;
     border: 2px solid transparent;
     border-radius: 4px;
@@ -273,17 +273,17 @@ svg {
 
 }
 
-.auth-buttons .addStu-btn {
+.auth-buttons2 .addStu-btn {
     background-color: #3b4d5f;
     color: #e0f4ff;
 }
 
-.auth-buttons .addStu-btn:hover {
+.auth-buttons2 .addStu-btn:hover {
     background-color: #005f80;
     transform: scale(1.05);
 }
 
-.auth-buttons .addStu-btn.active {
+.auth-buttons2 .addStu-btn.active {
     border-color: #ffffff !important;
     background-color: #004f66;
     color: #ffffff;
@@ -313,11 +313,11 @@ svg {
         gap: 10px;
     }
 
-    .auth-buttons {
+    .auth-buttons2 {
         justify-content: center;
     }
 
-    .auth-buttons .addStu-btn {
+    .auth-buttons2 .addStu-btn {
         width: 100%;
         max-width: 100%;
     }
