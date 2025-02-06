@@ -6,11 +6,11 @@ function AdminHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="header">
+    <header className="header-admin">
       <div className="navbar-container">
-        <div className="logo">
-          <img src={logo} alt="Campus Compass Logo" className="logo-image" />
-          <span className="logo-text">Campus Compass</span>
+        <div className="logo2">
+          <img src={logo} alt="Campus Compass Logo" className="logo-image2" />
+          <span className="logo-text2">Campus Compass</span>
         </div>
 
         <nav className="nav">
