@@ -1,31 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-/* 
-h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 40px;
-    color: #6B1B2C;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-} */
-
 .admin-container {
     margin-top: 30px;
     margin-bottom: 20px;
     background: rgba(141, 147, 157, 0.5);
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    display: grid;
+    width: 80%; 
     max-width: 95%;
-    justify-content: center;
-    justify-items: center;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
     text-align: center;
     box-shadow: 10px 14px 4px rgba(7, 7, 7, 0.466);
+   
 }
 
 .mask {
@@ -64,7 +53,7 @@ thead {
     border: 1px solid #bbb;
 }
 
-/* btn-danger */
+/* btn-danger 
 .btn.btn-danger {
     padding: 8px 8px;
     font-size: 14px;
@@ -73,6 +62,65 @@ thead {
 .btn.btn-danger i {
     font-size: 16px;
 }
+*/
+/* ------------------------------------------- */
+.admin-container {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background: rgba(141, 147, 157, 0.5);
+    padding: 10px; /* Reduced padding for a more compact look */
+    border-radius: 10px;
+    width: 80%; /* Adjusted width for better centering */
+    max-width: 95%;
+    display: flex; /* Flexbox for better centering */
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    text-align: center;
+    box-shadow: 10px 14px 4px rgba(7, 7, 7, 0.466);
+    margin-left: auto; /* Centers container */
+    margin-right: auto; /* Centers container */
+}
+
+/* Ensure the table is also centered properly */
+.mask {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+    border: 1px solid #bbb;
+    display: flex;
+    justify-content: center;
+}
+
+/* Ensure the table fits nicely */
+.table {
+    width: 95%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+}
+
+.table th,
+.table td {
+    padding: 4px 15px; /* Reduced padding */
+    border: 1px solid #bbb;
+}
+
+/* Adjusting button size */
+.btn.btn-danger {
+    padding: 6px 6px; /* Slightly reduced padding */
+    font-size: 12px; /* Smaller font size */
+}
+
+.btn.btn-danger i {
+    font-size: 14px;
+}
+
 
 /* search btn1 */
 
@@ -205,14 +253,10 @@ svg {
     width: 100%;
     height: 100%;
     max-width: 95%;
-    /* justify-content: center;
-    justify-items: center;
-    text-align: center; */
 }
 
 .search-row {
     display: flex;
-    /* align-items: center; */
     justify-content: space-between;
     width: 80%;
     max-width: 95%;
