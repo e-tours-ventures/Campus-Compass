@@ -49,10 +49,14 @@ thead {
 
 .table th,
 .table td {
-    padding: 4px 25px;
+    padding: 4px 4px;
     border: 1px solid #bbb;
 }
-
+.btn .trash{
+    /* padding: 8px 8px; */
+    width: 35px;
+    height: 35px;
+}
 /* btn-danger 
 .btn.btn-danger {
     padding: 8px 8px;
@@ -93,7 +97,7 @@ thead {
 }
 
 /* Ensure the table fits nicely */
-.table {
+/* .table {
     width: 95%;
     text-align: center;
     border-collapse: collapse;
@@ -107,20 +111,20 @@ thead {
 
 .table th,
 .table td {
-    padding: 4px 15px; /* Reduced padding */
+    padding: 4px 15px; 
     border: 1px solid #bbb;
-}
+} */
 
 /* Adjusting button size */
-.btn.btn-danger {
-    padding: 6px 6px; /* Slightly reduced padding */
-    font-size: 12px; /* Smaller font size */
+/* .btn.btn-danger {
+    padding: 6px 6px; 
+    font-size: 12px; 
 }
 
 .btn.btn-danger i {
     font-size: 14px;
 }
-
+ */
 
 /* search btn1 */
 
