@@ -7,6 +7,7 @@ import { setActiveLinks } from "../../Home/js/setActiveLinks";
 function AdminHeader() {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Close navigation menu when clicking a link
   const handleNavLinkClick = () => {
@@ -35,13 +36,13 @@ function AdminHeader() {
         </nav>
 
         {/* Hamburger Menu Button */}
-        <button 
+        {/* <button 
           className="menu-toggle" 
           onClick={() => setIsNavVisible(!isNavVisible)}
           aria-label="Toggle menu"
         >
           ☰
-        </button>
+        </button> */}
       </div>
     </header>
   );
