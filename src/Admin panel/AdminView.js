@@ -1,31 +1,87 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './AdminView.css';
 import AdminHeader from "./AdminHeader/AdminHeader";
-import { useState } from "react";
-import trash from "./assets/trash-bin.png"
-
+import trash from "./assets/trash-bin.png";
+import Swal from 'sweetalert2';
 function AdminView() {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredStudents, setFilteredStudents] = useState([]);
+    const [students, setStudents] = useState([]);
 
-    const students = [
-        { id: "12365478010", name: "Example Name", email: "example@email.com", feedback: "Example Feedback" },
-        { id: "12365478011", name: "John Doe", email: "johndoe@email.com", feedback: "Great experience!" },
-        { id: "12365478012", name: "Jane Doe", email: "janedoe@email.com", feedback: "Loved the service!" },
-        { id: "12365478010", name: "Example Name", email: "example@email.com", feedback: "Example Feedback" },
-        { id: "12365478011", name: "John Doe", email: "johndoe@email.com", feedback: "Great experience!" },
-        { id: "12365478012", name: "Jane Doe", email: "janedoe@email.com", feedback: "Loved the service!" },
-        { id: "12365478010", name: "Example Name", email: "example@email.com", feedback: "Example Feedback" },
-        { id: "12365478011", name: "John Doe", email: "johndoe@email.com", feedback: "Great experience!" },
-        { id: "12365478012", name: "Jane Doe", email: "janedoe@email.com", feedback: "Loved the service!" }
-    ];
+    useEffect(() => {
+        // Fetch student data from the API when the component mounts
+        fetch("http://localhost:3001/api/users/getStudentDetails")
+            .then(response => response.json())
+            .then(data => setStudents(data))
+            .catch(error => console.error("Error fetching student details:", error));
+    }, []);
 
-
-     const handleSearch = () => {
-        const filtered = students.filter(student => 
-            student.id.includes(searchTerm) || student.email.toLowerCase().includes(searchTerm.toLowerCase())
+    const handleSearch = () => {
+        const filtered = students.filter(student =>
+            student._id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            student.email.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredStudents(filtered);
+    };
+
+
+
+    const handleDelete = (id) => {
+        // Show confirmation alert before proceeding with deletion
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This action cannot be undone.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Send delete request to the backend
+                fetch(`http://localhost:3001/api/users/${id}`, {
+                    method: "DELETE",
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message === "User removed") {
+                            // Remove user from the students list in state
+                            const updatedStudents = students.filter(student => student._id !== id);
+                            setStudents(updatedStudents);
+
+                            // Show success alert
+                            Swal.fire(
+                                'Deleted!',
+                                'The user has been removed.',
+                                'success'
+                            );
+                        } else {
+                            // Show error alert if deletion fails
+                            Swal.fire(
+                                'Error!',
+                                `Failed to delete user: ${data.message}`,
+                                'error'
+                            );
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error deleting user:", error);
+                        Swal.fire(
+                            'Error!',
+                            'Something went wrong while deleting the user.',
+                            'error'
+                        );
+                    });
+            }
+        });
+    };
+
+
+
+
+    const handleClearSearch = () => {
+        setSearchTerm("");
+        setFilteredStudents([]);
     };
 
     return (
@@ -85,12 +141,12 @@ function AdminView() {
                         <tbody>
                         {(filteredStudents.length > 0 ? filteredStudents : students).map((student, index) => (
                                 <tr key={index}>
-                                    <td>{student.id}</td>
+                                    <td>{student._id}</td>
                                     <td>{student.name}</td>
                                     <td>{student.email}</td>
-                                    <td>{student.feedback}</td>
+                                    <td>{student.message}</td>
                                     <td>
-                                        <button className="btn">
+                                        <button className="btn" onClick={() => handleDelete(student._id)}>
                                             {/* <i className="bi bi-trash-fill"></i> */}
                                             <img src={trash} alt="" className="trash"/>
                                         </button>

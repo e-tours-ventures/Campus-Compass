@@ -41,7 +41,7 @@ const handleLogin = async (e) => {
       setTimeout(() => {
         // Redirect based on role
         if (data.role === "admin") {
-          // window.location.href = "/admin-dashboard"; // Redirect admin
+          window.location.href = "/admin"; // Redirect admin
         } else {
           window.location.href = "/UniversitiesAndDegrees/Universitypage"; // Redirect student
         }

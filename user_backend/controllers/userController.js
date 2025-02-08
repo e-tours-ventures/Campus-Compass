@@ -81,12 +81,14 @@ exports.getAllUsers = async (req, res) => {
 // Delete User
 exports.deleteUser = async (req, res) => {
   try {
+    // Fetch the user by ID
     const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    await user.remove();
+    // Use deleteOne() instead of remove()
+    await User.deleteOne({ _id: req.params.id });
     res.json({ message: "User removed" });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -122,7 +124,7 @@ exports.getAllStudents = async (req, res) => {
 
     // Merge student data with their feedback message
     const response = students.map(student => ({
-      _id: { "$oid": student._id.toString() }, // Format `_id` as requested
+      _id: student._id.toString(), // Directly convert _id to string
       name: student.name,
       email: student.email,
       message: feedbackMap[student.email]?.message || "No feedback"
