@@ -32,6 +32,7 @@ function AdminHeader() {
             <li>Home</li>
             <li>Student Info</li>
             <li>Courses</li>
+            <li>Logout</li>
           </ul>
         </nav>
 
