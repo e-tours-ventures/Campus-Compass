@@ -7,6 +7,24 @@ function AdminView() {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [students, setStudents] = useState([]);
+    // student modal Js part
+    const [showForm, setShowForm] = useState(false);
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const fetchStudents = () => {
+        fetch("http://localhost:3001/api/users/getStudentDetails")
+            .then(response => response.json())
+            .then(data => setStudents(data))
+            .catch(error => console.error("Error fetching student details:", error));
+    };
+
+    // Fetch students when the component mounts
+    useEffect(() => {
+        fetchStudents();
+    }, []);
+
 
     useEffect(() => {
         // Fetch student data from the API when the component mounts
@@ -23,7 +41,6 @@ function AdminView() {
         );
         setFilteredStudents(filtered);
     };
-
 
 
     const handleDelete = (id) => {
@@ -79,19 +96,62 @@ function AdminView() {
         setFilteredStudents([]);
     };
 
-    // student modal Js part
-    const [showForm, setShowForm] = useState(false);
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setpassword] = useState("");
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`Student Added:\nName: ${name}\nEmail: ${email}\nPassword: ${password}`);
-        setName("");
-        setEmail("");
-        setpassword("");
-        setShowForm(false);
+
+        try {
+            const response = await fetch("http://localhost:3001/api/users/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Success Alert
+                Swal.fire({
+                    title: "Success!",
+                    text: "Student Registered Successfully",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                });
+
+                // Reset form fields
+                setName("");
+                setEmail("");
+                setPassword("");
+                setShowForm(false);
+
+                // ✅ Refresh student list after adding a student
+                fetchStudents();
+            } else {
+                // Error Alert
+                Swal.fire({
+                    title: "Error!",
+                    text: data.message || "Failed to register student",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                });
+            }
+        } catch (error) {
+            // Catch network or unexpected errors
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong. Please try again.",
+                icon: "error",
+                confirmButtonText: "OK",
+            });
+            console.error("Error registering student:", error);
+        }
     };
+
     return (
         <>
             {/* Amin Header */}
@@ -150,7 +210,7 @@ function AdminView() {
                                                 type="password"
                                                 placeholder="Enter Password"
                                                 value={password}
-                                                onChange={(e) => setpassword(e.target.value)}
+                                                onChange={(e) => setPassword(e.target.value)}
                                                 required
                                             />
 
