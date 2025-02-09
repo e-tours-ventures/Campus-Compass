@@ -5,14 +5,8 @@ import logo from "../../Home/assets/images/logo.png";
 import { setActiveLinks } from "../../Home/js/setActiveLinks";
 
 function AdminHeader() {
-  const [isNavVisible, setIsNavVisible] = useState(false);
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Close navigation menu when clicking a link
-  const handleNavLinkClick = () => {
-    setIsNavVisible(false);
-  };
 
   useEffect(() => {
     setActiveLinks(".header-admin");
@@ -27,23 +21,24 @@ function AdminHeader() {
           <span className="logo-text2">Campus Compass</span>
         </div>
 
-        <nav className="nav">
-          <ul>
-            <li>Home</li>
-            <li>Student Info</li>
-            <li>Courses</li>
-            <li>Logout</li>
-          </ul>
-        </nav>
-
         {/* Hamburger Menu Button */}
-        {/* <button 
+        <button 
           className="menu-toggle" 
-          onClick={() => setIsNavVisible(!isNavVisible)}
+          onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
           ☰
-        </button> */}
+        </button>
+
+        {/* Navigation Links */}
+        <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
+          <ul>
+            <li onClick={() => setMenuOpen(false)}>Home</li>
+            <li onClick={() => setMenuOpen(false)}>Student Info</li>
+            <li onClick={() => setMenuOpen(false)}>Courses</li>
+            <li onClick={() => setMenuOpen(false)}>Logout</li>
+          </ul>
+        </nav>
       </div>
     </header>
   );
