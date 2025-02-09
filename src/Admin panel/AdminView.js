@@ -85,12 +85,13 @@ function AdminView() {
     const [showForm, setShowForm] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-
+    const [password, setpassword] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(`Student Added:\nName: ${name}\nEmail: ${email}`);
+        alert(`Student Added:\nName: ${name}\nEmail: ${email}\nPassword: ${password}`);
         setName("");
         setEmail("");
+        setpassword("");
         setShowForm(false);
     };
     return (
@@ -122,7 +123,7 @@ function AdminView() {
                         </form>
                     </div>
 
-                    {/* sudent add modal */}
+                    {/* student add modal */}
 
                     <div className="col-md-4 col-12">
 
@@ -147,9 +148,13 @@ function AdminView() {
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 required
                                             />
-
-                                            {/* <button type="submit" className="button-modal submit-modal">Submit</button>
-                                            <button type="button" className="button-modal close-modal" onClick={() => setShowForm(false)}>Cancel</button> */}
+                                            <input className="input2"
+                                                type="password"
+                                                placeholder="Enter Password"
+                                                value={password}
+                                                onChange={(e) => setpassword(e.target.value)}
+                                                required
+                                            />
 
                                             <div className="button-container">
                                                 <button type="submit" className="button-modal submit-modal">Submit</button>
