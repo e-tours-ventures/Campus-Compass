@@ -137,6 +137,68 @@
   color: #ffffff; /* Bright text for better contrast */
 }
 
+/* User Icon */
+.user-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.user-icon {
+  font-size: 40px; /* Increased size */
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.user-icon:hover {
+  color: #f39c12;
+}
+
+/* User Details Modal */
+.user-menu {
+  position: absolute;
+  top: 55px; /* Adjusted for bigger icon */
+  right: 0;
+  background: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  min-width: 200px; /* Slightly wider for better appearance */
+  text-align: left;
+  z-index: 1000;
+}
+
+.user-menu p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.user-menu .user-role {
+  font-weight: bold;
+  color: #f39c12;
+}
+
+.logout-btn {
+  width: 100%;
+  background: #d9534f;
+  color: white;
+  border: none;
+  padding: 10px; /* Increased padding for better button look */
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.logout-btn:hover {
+  background: #c9302c;
+}
+
+
 /* ---------------- RESPONSIVE DESIGN ---------------- */
 /* Tablets and Smaller Screens */
 @media (max-width: 768px) {
@@ -237,3 +299,6 @@
     display: none;
   }
 }
+
+
+

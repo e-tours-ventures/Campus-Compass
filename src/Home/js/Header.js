@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa"; // User icon
 import { setActiveLinks } from "./setActiveLinks";
+import Swal from "sweetalert2"; // Import SweetAlert
 import "../css/Header.css";
 import logo from "../assets/images/logo.png";
 import LoginModal from "../../components/LoginModal";
@@ -10,8 +12,16 @@ function Header() {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const navRef = useRef(null);
+  const userMenuRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate(); // Hook for navigation
+
+  // Get user details from localStorage
+  const userName = localStorage.getItem("name");
+  const userEmail = localStorage.getItem("email");
+  const userRole = localStorage.getItem("role");
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
@@ -21,10 +31,11 @@ function Header() {
     setIsNavVisible(false);
   };
 
+  // Close user menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (navRef.current && !navRef.current.contains(event.target)) {
-        setIsNavVisible(false);
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setShowUserMenu(false);
       }
     };
 
@@ -54,6 +65,41 @@ function Header() {
     setShowSignup(false);
   };
 
+  // Logout Function
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Logout!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Clear localStorage
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+        localStorage.removeItem("name");
+        localStorage.removeItem("email");
+
+        // Redirect to home
+        navigate("/");
+
+        // Show logout success message
+        Swal.fire({
+          icon: "success",
+          title: "Logged Out",
+          text: "You have been successfully logged out.",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        setShowUserMenu(false); // Close user menu
+      }
+    });
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -76,11 +122,29 @@ function Header() {
           </ul>
         </nav>
 
-        {/* Login & Signup Buttons */}
-        <div className="auth-buttons">
-          <button className="login-btn" onClick={openLogin}>Login</button>
-          <button className="signup-btn" onClick={openSignup}>Sign Up</button>
-        </div>
+        {/* Show Login & Signup if NOT logged in */}
+        {!userName ? (
+          <div className="auth-buttons">
+            <button className="login-btn" onClick={openLogin}>Login</button>
+            <button className="signup-btn" onClick={openSignup}>Sign Up</button>
+          </div>
+        ) : (
+          // Show user icon when logged in
+          <div className="user-icon-container" ref={userMenuRef}>
+            <FaUserCircle className="user-icon" onClick={() => setShowUserMenu(!showUserMenu)} />
+            
+            {/* Small dropdown modal for user details */}
+            {showUserMenu && (
+              <div className="user-menu">
+                <p><strong>{userName}</strong></p>
+                <p>{userEmail}</p>
+                <p className="user-role">{userRole === "admin" ? "Admin" : "Student"}</p>
+                <hr />
+                <button className="logout-btn" onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Modals */}
         {showLogin && <LoginModal onClose={closeModal} onSwitchToSignup={openSignup} />}

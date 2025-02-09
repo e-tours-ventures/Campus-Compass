@@ -10,14 +10,12 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   const navigate = useNavigate(); // Navigation hook
 
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
-    setSuccess("");
 
     console.log("Sending request with:", { name, email, password });
 
@@ -26,26 +24,31 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
         name: name.trim(),
         email: email.trim(),
         password,
-        role: "student"
+        role: "student",
       });
 
-      // Success Alert
+      // Save user details in localStorage (Auto Login)
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+      localStorage.setItem("name", name.trim());
+      localStorage.setItem("email", email.trim());
+
+      // Show success message
       Swal.fire({
         icon: "success",
-        title: "Success!",
-        text: "Account created successfully!",
-        confirmButtonText: "OK",
-      }).then(() => {
-        navigate('/UniversitiesAndDegrees/Universitypage'); // Redirect to home page after user clicks OK
+        title: "Welcome!",
+        text: "Your account has been created successfully!",
+        showConfirmButton: false,
+        timer: 2000,
       });
 
-      setSuccess("Account created successfully!");
-      setName("");
-      setEmail("");
-      setPassword("");
-      onClose();
+      setTimeout(() => {
+        navigate("/UniversitiesAndDegrees/Universitypage"); // Redirect after signup
+        onClose(); // Close modal
+      }, 2000);
+      
     } catch (err) {
-      console.error("Error during signup:", err.response?.data);
+      console.error("Signup Error:", err.response?.data);
 
       // Show an error SweetAlert
       Swal.fire({
@@ -76,7 +79,6 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
 
         <form onSubmit={handleSignup}>
           {error && <p className="error-message">{error}</p>}
-          {success && <p className="success-message">{success}</p>}
           <input
             type="text"
             placeholder="Enter your name"
