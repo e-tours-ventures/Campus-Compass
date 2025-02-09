@@ -1,16 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import Swal from "sweetalert2"; // ✅ Import SweetAlert2
 import "./AdminHeader.css";
 import logo from "../../Home/assets/images/logo.png";
 import { setActiveLinks } from "../../Home/js/setActiveLinks";
 
 function AdminHeader() {
   const location = useLocation();
+  const navigate = useNavigate(); // ✅ Initialize useNavigate
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setActiveLinks(".header-admin");
   }, [location]);
+
+  // ✅ Logout Function with Navigation to Root State
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("role"); // ✅ Clear role from localStorage
+        Swal.fire("Logged Out!", "You have been successfully logged out.", "success").then(() => {
+          navigate("/Login", { replace: true }); // ✅ Navigate to root & replace history
+        });
+      }
+    });
+  };
 
   return (
     <header className="header-admin">
@@ -33,10 +55,8 @@ function AdminHeader() {
         {/* Navigation Links */}
         <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
           <ul>
-            <li onClick={() => setMenuOpen(false)}>Home</li>
             <li onClick={() => setMenuOpen(false)}>Student Info</li>
-            <li onClick={() => setMenuOpen(false)}>Courses</li>
-            <li onClick={() => setMenuOpen(false)}>Logout</li>
+            <li onClick={handleLogout}>Logout</li> {/* ✅ Logout with root navigation */}
           </ul>
         </nav>
       </div>

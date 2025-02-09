@@ -11,6 +11,7 @@ import FloatingButtons from "./components/FloatingButtons";
 import ScrollToTopOnRouteChange from "./components/ScrollToTopOnRouteChange";
 import Universitypage from "./UniversitiesAndDegrees/Universitypage";
 import Admin from "./Admin panel/AdminView";
+import Login from "./components/LoginModal";
 
 const App = () => {
   const [role, setRole] = useState(null);
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/Admin" element={<Admin />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>
           <FloatingButtons />
         </main>
