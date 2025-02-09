@@ -45,11 +45,9 @@ function AdminView() {
                     .then(response => response.json())
                     .then(data => {
                         if (data.message === "User removed") {
-                            // Remove user from the students list in state
                             const updatedStudents = students.filter(student => student._id !== id);
                             setStudents(updatedStudents);
 
-                            // Show success alert
                             Swal.fire(
                                 'Deleted!',
                                 'The user has been removed.',
@@ -80,8 +78,8 @@ function AdminView() {
         setSearchTerm("");
         setFilteredStudents([]);
     };
-    // ---------------------
 
+    // student modal Js part
     const [showForm, setShowForm] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -96,9 +94,10 @@ function AdminView() {
     };
     return (
         <>
-            {/* <div className="row"> */}
+            {/* Amin Header */}
             <AdminHeader />
 
+            {/* search bar */}
             <div className="search-container">
                 <div className="row search-row">
                     <div className="col-md-8 col-12">
@@ -123,8 +122,7 @@ function AdminView() {
                         </form>
                     </div>
 
-                    {/* student add modal */}
-
+                    {/* Add student modal */}
                     <div className="col-md-4 col-12">
 
                         <div className="auth-buttons2">
@@ -161,7 +159,6 @@ function AdminView() {
                                                 <button type="button" className="button-modal close-modal" onClick={() => setShowForm(false)}>Cancel</button>
                                             </div>
 
-
                                         </form>
                                     </div>
 
@@ -173,9 +170,7 @@ function AdminView() {
                 </div>
             </div>
 
-            {/* search bar */}
-
-            {/* Table for Students & Feedback */}
+            {/* Table of Students details view */}
             <div className="admin-container">
                 <div className="mask">
 
@@ -198,7 +193,6 @@ function AdminView() {
                                     <td>{student.message}</td>
                                     <td>
                                         <button className="btn" onClick={() => handleDelete(student._id)}>
-                                            {/* <i className="bi bi-trash-fill"></i> */}
                                             <img src={trash} alt="" className="trash" />
                                         </button>
                                     </td>
@@ -208,7 +202,7 @@ function AdminView() {
                     </table>
                 </div>
             </div>
-            {/* </div> */}
+
         </>
     );
 }
