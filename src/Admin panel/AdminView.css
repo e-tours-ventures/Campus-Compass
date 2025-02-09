@@ -327,14 +327,14 @@ svg {
 .button-container {
     display: flex;
     justify-content: center;
-    gap: 5px; 
+    gap: 5px;
     margin-top: 10px;
 }
 
 
 .button-modal {
     width: auto;
-    padding: 10px 15px; 
+    padding: 10px 15px;
     margin-top: 10px;
     border: none;
     border-radius: 5px;
@@ -345,7 +345,7 @@ svg {
     background-color: #2846a7;
     color: white;
     margin-right: 30px;
-  
+
 }
 
 .submit-modal:hover {
