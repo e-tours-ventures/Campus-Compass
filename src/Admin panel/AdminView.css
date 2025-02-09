@@ -61,15 +61,11 @@ thead {
 }
 
 .btn .trash {
-    /* padding: 8px 8px; */
     width: 35px;
     height: 35px;
 }
 
-/* ------------------------------------------- */
-
-/* search btn1 */
-
+/* search bar */
 .form {
     margin: 20px;
     margin-top: 50px;
@@ -130,7 +126,6 @@ label {
     left: var(--inline-padding-of-input);
 }
 
-/* svg -- size */
 svg {
     width: 17px;
     display: block;
@@ -217,6 +212,7 @@ svg {
     flex-grow: 1;
 }
 
+/* Add student btn */
 .auth-buttons2 {
     display: flex;
     justify-content: flex-end;
