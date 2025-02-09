@@ -76,14 +76,23 @@ function AdminView() {
         });
     };
 
-
-
-
     const handleClearSearch = () => {
         setSearchTerm("");
         setFilteredStudents([]);
     };
+    // ---------------------
 
+    const [showForm, setShowForm] = useState(false);
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert(`Student Added:\nName: ${name}\nEmail: ${email}`);
+        setName("");
+        setEmail("");
+        setShowForm(false);
+    };
     return (
         <>
             {/* <div className="row"> */}
@@ -94,8 +103,8 @@ function AdminView() {
                     <div className="col-md-8 col-12">
                         <form className="form" onSubmit={(e) => e.preventDefault()}>
                             <label htmlFor="search">
-                                <input className="input1" type="text" required placeholder="Search by ID or email" id="search"  value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}/>
+                                <input className="input1" type="text" required placeholder="Search by ID or email" id="search" value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)} />
                                 <div className="fancy-bg"></div>
                                 <div className="search" onClick={handleSearch}>
                                     <svg viewBox="0 0 24 24" aria-hidden="true" className="search-icon">
@@ -113,21 +122,58 @@ function AdminView() {
                         </form>
                     </div>
 
+                    {/* sudent add modal */}
+
                     <div className="col-md-4 col-12">
+
                         <div className="auth-buttons2">
-                            <button className="addStu-btn">Add new Student</button>
+                            <button className="addStu-btn" onClick={() => setShowForm(true)}>Add new Student</button>
+                            {showForm && (
+                                <div className="form-overlay">
+                                    <div className="form-container">
+                                        <h2>Add Student</h2>
+                                        <form onSubmit={handleSubmit}>
+                                            <input className="input2"
+                                                type="text"
+                                                placeholder="Enter Name"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                                required
+                                            />
+                                            <input className="input2"
+                                                type="email"
+                                                placeholder="Enter Email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                            />
+
+                                            {/* <button type="submit" className="button-modal submit-modal">Submit</button>
+                                            <button type="button" className="button-modal close-modal" onClick={() => setShowForm(false)}>Cancel</button> */}
+
+                                            <div className="button-container">
+                                                <button type="submit" className="button-modal submit-modal">Submit</button>
+                                                <button type="button" className="button-modal close-modal" onClick={() => setShowForm(false)}>Cancel</button>
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            )}
                         </div>
+
                     </div>
                 </div>
             </div>
-
 
             {/* search bar */}
 
             {/* Table for Students & Feedback */}
             <div className="admin-container">
                 <div className="mask">
-                    
+
                     <table className="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -139,7 +185,7 @@ function AdminView() {
                             </tr>
                         </thead>
                         <tbody>
-                        {(filteredStudents.length > 0 ? filteredStudents : students).map((student, index) => (
+                            {(filteredStudents.length > 0 ? filteredStudents : students).map((student, index) => (
                                 <tr key={index}>
                                     <td>{student._id}</td>
                                     <td>{student.name}</td>
@@ -148,7 +194,7 @@ function AdminView() {
                                     <td>
                                         <button className="btn" onClick={() => handleDelete(student._id)}>
                                             {/* <i className="bi bi-trash-fill"></i> */}
-                                            <img src={trash} alt="" className="trash"/>
+                                            <img src={trash} alt="" className="trash" />
                                         </button>
                                     </td>
                                 </tr>

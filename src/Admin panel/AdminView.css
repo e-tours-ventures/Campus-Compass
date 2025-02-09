@@ -6,22 +6,27 @@
     background: rgba(141, 147, 157, 0.5);
     padding: 10px;
     border-radius: 10px;
-    width: 80%; 
+    width: 80%;
     max-width: 95%;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
     text-align: center;
     box-shadow: 10px 14px 4px rgba(7, 7, 7, 0.466);
-   
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
+/* table styles */
 .mask {
     max-height: 400px;
     overflow-y: auto;
     width: 100%;
     border: 1px solid #bbb;
+    display: flex;
+    justify-content: center;
 }
 
 .mask>div {
@@ -45,88 +50,23 @@
 thead {
     position: sticky;
     top: 0;
-}
-.table th{
     background-color: #eeeaea;
+    z-index: 2;
 }
+
 .table th,
 .table td {
     padding: 4px 4px;
     border: 1px solid #bbb;
 }
-.btn .trash{
+
+.btn .trash {
     /* padding: 8px 8px; */
     width: 35px;
     height: 35px;
 }
-/* btn-danger 
-.btn.btn-danger {
-    padding: 8px 8px;
-    font-size: 14px;
-}
 
-.btn.btn-danger i {
-    font-size: 16px;
-}
-*/
 /* ------------------------------------------- */
-.admin-container {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    background: rgba(141, 147, 157, 0.5);
-    padding: 10px; /* Reduced padding for a more compact look */
-    border-radius: 10px;
-    width: 80%; /* Adjusted width for better centering */
-    max-width: 95%;
-    display: flex; /* Flexbox for better centering */
-    flex-direction: column;
-    align-items: center; /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
-    text-align: center;
-    box-shadow: 10px 14px 4px rgba(7, 7, 7, 0.466);
-    margin-left: auto; /* Centers container */
-    margin-right: auto; /* Centers container */
-}
-
-/* Ensure the table is also centered properly */
-.mask {
-    max-height: 400px;
-    overflow-y: auto;
-    width: 100%;
-    border: 1px solid #bbb;
-    display: flex;
-    justify-content: center;
-}
-
-/* Ensure the table fits nicely */
-/* .table {
-    width: 95%;
-    text-align: center;
-    border-collapse: collapse;
-    margin-bottom: 10px;
-}
-
-thead {
-    position: sticky;
-    top: 0;
-}
-
-.table th,
-.table td {
-    padding: 4px 15px; 
-    border: 1px solid #bbb;
-} */
-
-/* Adjusting button size */
-/* .btn.btn-danger {
-    padding: 6px 6px; 
-    font-size: 12px; 
-}
-
-.btn.btn-danger i {
-    font-size: 14px;
-}
- */
 
 /* search btn1 */
 
@@ -141,10 +81,7 @@ thead {
     --width-of-input: 200px;
     --inline-padding-of-input: 1.2em;
     --gap: 0.9rem;
-}
 
-/* form style */
-.form {
     font-size: 0.9rem;
     display: flex;
     gap: 0.5rem;
@@ -152,7 +89,13 @@ thead {
     width: var(--width-of-input);
     position: relative;
     isolation: isolate;
+    justify-content: right;
+    justify-items: right;
+    width: 100%;
+    display: flex;
 }
+
+/* form style */
 
 .fancy-bg {
     position: absolute;
@@ -269,14 +212,6 @@ svg {
     margin: auto;
 }
 
-.form {
-    justify-content: right;
-    justify-items: right;
-    width: 100%;
-    display: flex;
-    /* align-items: center; */
-}
-
 .input1 {
     width: 80%;
     flex-grow: 1;
@@ -301,6 +236,7 @@ svg {
     width: 100%;
     max-width: 200px;
     text-align: center;
+    text-decoration: none;
 }
 
 
@@ -309,23 +245,6 @@ svg {
     margin-top: 50px;
     display: flex;
     gap: 1rem;
-}
-
-.auth-buttons2 .addStu-btn {
-    padding: 0.6rem 1rem;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none;
-
-}
-
-.auth-buttons2 .addStu-btn {
-    background-color: #3b4d5f;
-    color: #e0f4ff;
 }
 
 .auth-buttons2 .addStu-btn:hover {
@@ -371,4 +290,77 @@ svg {
         width: 100%;
         max-width: 100%;
     }
+}
+
+/* ------Modal form css-------- */
+
+.form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+.form-container {
+    z-index: 1000;
+    position: fixed;
+    background: rgb(230, 228, 228);
+    padding: 20px;
+    border-radius: 8px;
+    width: 95%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.input2 {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px; 
+    margin-top: 10px;
+}
+
+
+.button-modal {
+    width: auto;
+    padding: 10px 15px; 
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-modal {
+    background-color: #2846a7;
+    color: white;
+    margin-right: 30px;
+  
+}
+
+.submit-modal:hover {
+    background-color: #05124d;
+}
+
+.close-modal {
+    background-color: #dc3545;
+    color: white;
+}
+
+.close-modal:hover {
+    background-color: #b11b2a;
 }
