@@ -16,7 +16,7 @@ function Header() {
   const navRef = useRef(null);
   const userMenuRef = useRef(null);
   const location = useLocation();
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   // Get user details from localStorage
   const userName = localStorage.getItem("name");
@@ -95,7 +95,7 @@ function Header() {
           timer: 2000,
         });
 
-        setShowUserMenu(false); // Close user menu
+        setShowUserMenu(false); 
       }
     });
   };

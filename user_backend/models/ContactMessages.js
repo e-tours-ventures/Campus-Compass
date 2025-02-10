@@ -19,7 +19,7 @@ const contactMessageSchema = new mongoose.Schema(
       default: Date.now
     }
   },
-  { collection: "contact_messages" } // Explicitly set the collection name
+  { collection: "contact_messages" } 
 );
 
 module.exports = mongoose.model("ContactMessage", contactMessageSchema);

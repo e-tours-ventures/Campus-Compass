@@ -19,21 +19,21 @@ app.use("/api", userRoutes);
 // MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI;
 if (!MONGO_URI) {
-  console.error("❌ MongoDB URI is missing. Please set MONGO_URI in .env");
-  process.exit(1); // Exit the app if no database URI is found
+  console.error(" MongoDB URI is missing. Please set MONGO_URI in .env");
+  process.exit(1);
 }
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => {
-  console.log("✅ MongoDB connected successfully");
-  // Start server only after DB connection
-  app.listen(3001, () => {
-    console.log("🚀 Server running on port 3001");
+  .then(() => {
+    console.log(" MongoDB connected successfully");
+    // Start server only after DB connection
+    app.listen(3001, () => {
+      console.log(" Server running on port 3001");
+    });
+  })
+  .catch((error) => {
+    console.error(" Error connecting to MongoDB:", error);
   });
-})
-.catch((error) => {
-  console.error("❌ Error connecting to MongoDB:", error);
-});

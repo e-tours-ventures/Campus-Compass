@@ -11,7 +11,7 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const navigate = useNavigate(); // Navigation hook
+  const navigate = useNavigate(); 
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -43,8 +43,8 @@ const SignupModal = ({ onClose, onSwitchToLogin }) => {
       });
 
       setTimeout(() => {
-        navigate("/UniversitiesAndDegrees/Universitypage"); // Redirect after signup
-        onClose(); // Close modal
+        navigate("/UniversitiesAndDegrees/Universitypage"); 
+        onClose();
       }, 2000);
       
     } catch (err) {

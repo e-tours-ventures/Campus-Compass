@@ -3,14 +3,13 @@ const ContactMessage = require("../models/ContactMessages");
 const jwt = require("jsonwebtoken");
 
 // Generate JWT Token
-require("dotenv").config(); // Ensure dotenv is required to load environment variables
-
+require("dotenv").config(); 
 const generateToken = (userId) => {
   const payload = { userId };
   
   // Use the secret key from the environment variable
   return jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: "1h", // Optional: Set expiration time for the token
+    expiresIn: "1h", 
   });
 };
 
@@ -29,7 +28,7 @@ exports.registerUser = async (req, res) => {
 
     // Save user to MongoDB
     await user.save();
-    console.log("✅ User successfully inserted!");
+    console.log("User successfully inserted!");
 
     // Send success response
     res.status(201).json({
@@ -40,7 +39,7 @@ exports.registerUser = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("❌ Error inserting user:", error);
+    console.error("Error inserting user:", error);
     res.status(500).json({ message: "Server error. Please try again." });
   }
 };
@@ -106,12 +105,12 @@ exports.getAllStudents = async (req, res) => {
     // Fetch the latest feedback message for each student
     const feedbacks = await ContactMessage.aggregate([
       { $match: { email: { $in: studentEmails } } },
-      { $sort: { created_at: -1 } }, // Sort to get the latest message
+      { $sort: { created_at: -1 } }, 
       {
         $group: {
           _id: "$email",
           message: { $first: "$message" },
-          created_at: { $first: "$created_at" } // Keep the latest created_at
+          created_at: { $first: "$created_at" } 
         }
       }
     ]);
@@ -124,7 +123,7 @@ exports.getAllStudents = async (req, res) => {
 
     // Merge student data with their feedback message
     const response = students.map(student => ({
-      _id: student._id.toString(), // Directly convert _id to string
+      _id: student._id.toString(), 
       name: student.name,
       email: student.email,
       message: feedbackMap[student.email]?.message || "No feedback"

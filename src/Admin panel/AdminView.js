@@ -3,11 +3,12 @@ import './AdminView.css';
 import AdminHeader from "./AdminHeader/AdminHeader";
 import trash from "./assets/trash-bin.png";
 import Swal from 'sweetalert2';
+
 function AdminView() {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [students, setStudents] = useState([]);
-    // student modal Js part
+  
     const [showForm, setShowForm] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -20,14 +21,13 @@ function AdminView() {
             .catch(error => console.error("Error fetching student details:", error));
     };
 
-    // Fetch students when the component mounts
     useEffect(() => {
         fetchStudents();
     }, []);
 
 
     useEffect(() => {
-        // Fetch student data from the API when the component mounts
+        // Fetch student data from the API 
         fetch("http://localhost:3001/api/users/getStudentDetails")
             .then(response => response.json())
             .then(data => setStudents(data))
@@ -129,7 +129,7 @@ function AdminView() {
                 setPassword("");
                 setShowForm(false);
 
-                // ✅ Refresh student list after adding a student
+                // Refresh student list after adding a student
                 fetchStudents();
             } else {
                 // Error Alert
@@ -154,7 +154,6 @@ function AdminView() {
 
     return (
         <>
-            {/* Amin Header */}
             <AdminHeader />
 
             {/* search bar */}

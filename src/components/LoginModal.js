@@ -22,13 +22,13 @@ const LoginModal = ({ onClose, onSwitchToSignup }) => {
       const data = await response.json();
 
       if (response.ok) {
-        // ✅ Save token, role, name, and email in localStorage
+        //  Save token, role, name, and email in localStorage
         localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.role); // Save user role
-        localStorage.setItem("name", data.name); // Save user name
-        localStorage.setItem("email", data.email); // Save email
+        localStorage.setItem("role", data.role); 
+        localStorage.setItem("name", data.name); 
+        localStorage.setItem("email", data.email); 
 
-        // ✅ Show success alert
+        //  Show success alert
         Swal.fire({
           icon: "success",
           title: "Login Successful!",
@@ -38,17 +38,17 @@ const LoginModal = ({ onClose, onSwitchToSignup }) => {
         });
 
         setTimeout(() => {
-          // ✅ Redirect based on role
+          //  Redirect based on role
           if (data.role === "admin") {
-            window.location.href = "/admin"; // Redirect admin
+            window.location.href = "/admin"; 
           } else {
-            window.location.href = "/UniversitiesAndDegrees/Universitypage"; // Redirect student
+            window.location.href = "/UniversitiesAndDegrees/Universitypage"; 
           }
         }, 2000);
 
         onClose(); // Close the modal
       } else {
-        // ❌ Show error alert
+        //  Show error alert
         Swal.fire({
           icon: "error",
           title: "Login Failed",
@@ -56,7 +56,7 @@ const LoginModal = ({ onClose, onSwitchToSignup }) => {
         });
       }
     } catch (err) {
-      // ❌ Show network error alert
+      //  Show network error alert
       Swal.fire({
         icon: "error",
         title: "Oops...",

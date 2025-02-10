@@ -4,7 +4,7 @@ const { registerUser, loginUser, getAllUsers, deleteUser, getAllStudents } = req
 const router = express.Router();
 
 // Register a new user
-router.post("/users/register", registerUser);  // Ensuring the API path starts with /users
+router.post("/users/register", registerUser);  
 
 // User login
 router.post("/users/login", loginUser);
@@ -15,6 +15,7 @@ router.get("/users", getAllUsers);
 // Delete a user by ID
 router.delete("/users/:id", deleteUser);
 
+//Get all students
 router.get("/users/getStudentDetails", getAllStudents);
 
 module.exports = router;

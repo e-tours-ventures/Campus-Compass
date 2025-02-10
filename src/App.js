@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <Router>
-      {/* ✅ Show Header by default, Hide only for admin */}
+      {/* Show Header by default, Hide only for admin */}
       {role !== "admin" && <Header />}
 
       <div className="app-container">

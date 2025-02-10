@@ -183,7 +183,6 @@ svg {
     visibility: visible;
 }
 
-/* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
 .input1:-webkit-autofill,
 .input1:-webkit-autofill:hover,
 .input1:-webkit-autofill:focus,
